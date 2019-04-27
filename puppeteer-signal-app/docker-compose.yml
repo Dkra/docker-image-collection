@@ -1,0 +1,12 @@
+version: '3.7'
+services:
+  signal:
+    image: buildkite/puppeteer
+    working_dir: /var/www/app/
+    stdin_open: true
+    environment:
+      - SIGNAL_PROJECT_AUTH
+    volumes:
+      - '${HOME}/app:/var/www/app'
+    tty: true
+    command: sh -c "ls && cd SigNal && npm install && chmod -R 777 node_modules && node App.js"
